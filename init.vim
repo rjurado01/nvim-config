@@ -5,12 +5,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'bling/vim-airline' " improved statusbar
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'tpope/vim-endwise'
+Plug 'jiangmiao/auto-pairs'
 Plug 'slim-template/vim-slim'
 Plug 'digitaltoad/vim-pug'
 Plug 'Chiel92/vim-autoformat'
 Plug 'elixir-editors/vim-elixir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
 call plug#end()
 
 " Para usar las opciones de vim en lugar de las de vi
@@ -82,12 +84,13 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+inoremap <expr> <C-l> "\<C-y>"
 
 " grep word under cursor
 command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
