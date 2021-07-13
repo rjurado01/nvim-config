@@ -58,6 +58,19 @@ let g:NERDDefaultAlign='left'
 
 let mapleader="," " Cambia la tecla <Leader> de '\' a ','
 
+" Coc extensions
+let g:coc_global_extensions = [
+  \'coc-eslint',
+  \'coc-explorer',
+  \'coc-git',
+  \'coc-json',
+  \'coc-lists',
+  \'coc-snippets',
+  \'coc-solargraph',
+  \'coc-stylelintplus',
+  \'coc-tsserver'
+  \]
+
 nmap <F2> :CocCommand document.renameCurrentWord<CR>
 nmap <F3> :CocCommand explorer<CR>
 nmap <F4> :Gdiff<CR>
