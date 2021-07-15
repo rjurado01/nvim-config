@@ -5,7 +5,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'bling/vim-airline' " improved statusbar
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'tpope/vim-endwise'
-Plug 'jiangmiao/auto-pairs'
+Plug 'rstacruz/vim-closer'
 Plug 'slim-template/vim-slim'
 Plug 'digitaltoad/vim-pug'
 Plug 'Chiel92/vim-autoformat'
@@ -14,6 +14,19 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 call plug#end()
+
+" Coc extensions
+let g:coc_global_extensions = [
+  \'coc-eslint',
+  \'coc-explorer',
+  \'coc-git',
+  \'coc-json',
+  \'coc-lists',
+  \'coc-snippets',
+  \'coc-solargraph',
+  \'coc-stylelintplus',
+  \'coc-tsserver'
+  \]
 
 " Para usar las opciones de vim en lugar de las de vi
 " Esto tiene que ir al principio del fichero
@@ -58,19 +71,6 @@ let g:NERDDefaultAlign='left'
 
 let mapleader="," " Cambia la tecla <Leader> de '\' a ','
 
-" Coc extensions
-let g:coc_global_extensions = [
-  \'coc-eslint',
-  \'coc-explorer',
-  \'coc-git',
-  \'coc-json',
-  \'coc-lists',
-  \'coc-snippets',
-  \'coc-solargraph',
-  \'coc-stylelintplus',
-  \'coc-tsserver'
-  \]
-
 nmap <F2> :CocCommand document.renameCurrentWord<CR>
 nmap <F3> :CocCommand explorer<CR>
 nmap <F4> :Gdiff<CR>
@@ -103,7 +103,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <expr> <C-l> "\<C-y>"
+inoremap <silent><expr> <c-l> pumvisible() ? coc#_select_confirm() : "\<c-l>"
 
 " grep word under cursor
 command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
