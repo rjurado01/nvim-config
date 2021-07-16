@@ -2,12 +2,12 @@
   "explorer.icon.enableNerdfont": true,
   "solargraph.formatting": true,
   "solargraph.diagnostics": true,
-    "explorer.keyMappings.global": {
+  "explorer.keyMappings": {
     "<c-v>": "open:vsplit",
     "<c-t>": "open:tab"
   },
-	"list.insertMappings": {
-		"<C-t>": "action:tabe",
-    "<C-v>": "action:vsplit"
-	}
+  "list.insertMappings": {
+    "<C-v>": "action:vsplit",
+    "<C-t>": "action:tabe"
+  }
 }
