@@ -8,8 +8,8 @@
     "<c-v>": "open:vsplit",
     "<c-t>": "open:tab"
   },
-	"list.insertMappings": {
-		"<C-v>": "action:vsplit",
-		"<C-t>": "action:tabe"
+  "list.insertMappings": {
+    "<C-v>": "action:vsplit",
+    "<C-t>": "action:tabe"
   }
 }
