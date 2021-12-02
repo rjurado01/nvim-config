@@ -12,7 +12,6 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'elixir-editors/vim-elixir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'honza/vim-snippets'
 call plug#end()
 
 " Coc extensions
@@ -61,6 +60,10 @@ syntax on
 set t_Co=256
 color apprentice
 
+" Slime extension
+au BufReadPost *.slime set syntax=slim
+au BufReadPost *.slimleex set syntax=slim
+
 " Airline
 let g:airline_section_b = ''
 let g:airline_section_x = ''
@@ -86,10 +89,6 @@ let g:airline_mode_map = {
     \ 'V'      : 'V',
     \ ''     : 'V',
     \ }
-
-" Slime extension
-au BufReadPost *.slime set syntax=slim
-au BufReadPost *.slimleex set syntax=slim
 
 " Configura NERDCommenter para añadir un espacio después del comentario
 let NERDSpaceDelims=1
@@ -130,6 +129,11 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <silent><expr> <c-l> pumvisible() ? coc#_select_confirm() : "\<c-l>"
+
+let g:endwise_no_mappings = v:true
+inoremap <expr> <Plug>CustomCocCR pumvisible() ? coc#_select_confirm()
+  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+imap <CR> <Plug>CustomCocCR<Plug>DiscretionaryEnd
 
 " grep word under cursor
 command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
