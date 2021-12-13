@@ -12,6 +12,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'elixir-editors/vim-elixir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
 call plug#end()
 
 " Coc extensions
@@ -146,3 +147,6 @@ endfunction
 
 " Keymapping for grep word under cursor with interactive mode
 nnoremap <silent> <Leader>cf :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+
+" Alias para cerrar la pestaña actual
+cnoreabbrev qt tabclose
