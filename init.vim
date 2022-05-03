@@ -146,7 +146,7 @@ function! s:GrepArgs(...)
 endfunction
 
 " Keymapping for grep word under cursor with interactive mode
-nnoremap <silent> <Leader>cf :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+nnoremap <silent> <Leader>G :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 
 " Alias para cerrar la pestaña actual
 cnoreabbrev qt tabclose
