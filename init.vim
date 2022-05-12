@@ -1,15 +1,15 @@
 " Cargamos los plugins
 call plug#begin()
-Plug 'tpope/vim-fugitive' " git
+" Plug 'tpope/vim-fugitive' " git
 Plug 'scrooloose/nerdcommenter'
 Plug 'bling/vim-airline' " improved statusbar
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'tpope/vim-endwise'
-Plug 'rstacruz/vim-closer'
-Plug 'slim-template/vim-slim'
+" Plug 'rstacruz/vim-closer'
+" Plug 'slim-template/vim-slim'
 Plug 'digitaltoad/vim-pug'
 Plug 'Chiel92/vim-autoformat'
-Plug 'elixir-editors/vim-elixir'
+" Plug 'elixir-editors/vim-elixir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
@@ -107,10 +107,16 @@ nmap <silent> <C-c> <Plug>(coc-cursors-position)
 nmap <silent> <C-d> <Plug>(coc-cursors-word)
 nmap <silent> <C-z> <Plug>(coc-refactor)
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 
-nnoremap <silent> <Leader>g :exe 'CocList grep'<CR>
+nnoremap <silent> <Leader>s :exe 'CocList grep'<CR>
 nnoremap <silent> <Leader>f :exe 'CocList files'<CR>
 
 "" Swith between .pug and .js
@@ -147,6 +153,8 @@ endfunction
 
 " Keymapping for grep word under cursor with interactive mode
 nnoremap <silent> <Leader>G :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+
+nnoremap <silent> <Leader>r :exe 'CocSearch -w '.expand('<cword>')<CR>
 
 " Alias para cerrar la pestaña actual
 cnoreabbrev qt tabclose
