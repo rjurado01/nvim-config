@@ -13,6 +13,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
+Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
 " Coc extensions
@@ -116,8 +117,23 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 
+" Keymapping for grep word under cursor with interactive mode
+nnoremap <silent> <Leader>S :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+
+" Open search words bar
 nnoremap <silent> <Leader>s :exe 'CocList grep'<CR>
+
+" Delete word cursor
+nnoremap <silent> <Leader>d ciw
+
+" Rename word under cursor in all files (split view)
+nnoremap <silent> <Leader>R :exe 'CocSearch -w '.expand('<cword>')<CR>
+
+" Open find file bar
 nnoremap <silent> <Leader>f :exe 'CocList files'<CR>
+
+" Alias para cerrar la pestaña actual
+cnoreabbrev qt tabclose
 
 "" Swith between .pug and .js
 nnoremap <Leader>v :vs %:p:s,.js$,.X123X,:s,.pug$,.js,:s,.X123X$,.pug,<CR>
@@ -142,7 +158,7 @@ inoremap <expr> <Plug>CustomCocCR pumvisible() ? coc#_select_confirm()
   \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 imap <CR> <Plug>CustomCocCR<Plug>DiscretionaryEnd
 
-" grep word under cursor
+" Grep word under cursor
 command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
 function! s:GrepArgs(...)
@@ -150,11 +166,3 @@ function! s:GrepArgs(...)
         \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
   return join(list, "\n")
 endfunction
-
-" Keymapping for grep word under cursor with interactive mode
-nnoremap <silent> <Leader>G :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
-
-nnoremap <silent> <Leader>r :exe 'CocSearch -w '.expand('<cword>')<CR>
-
-" Alias para cerrar la pestaña actual
-cnoreabbrev qt tabclose
