@@ -113,9 +113,24 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gt :call CocAction('jumpDefinition', 'tabe')<CR>
 
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
 " Keymapping for grep word under cursor with interactive mode
 nnoremap <silent> <Leader>S :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
@@ -166,3 +181,9 @@ function! s:GrepArgs(...)
         \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
   return join(list, "\n")
 endfunction
+
+" Auto format before save
+" autocmd BufWritePre * call CocAction('format')
+
+" Apply AutoFix to problem on the current line.
+" nmap <leader>qf  <Plug>(coc-codeaction)
