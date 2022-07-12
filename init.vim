@@ -150,7 +150,8 @@ nnoremap <silent> <Leader>f :exe 'CocList files'<CR>
 " Alias para cerrar la pestaña actual
 cnoreabbrev qt tabclose
 
-"" Swith between .pug and .js
+" Swith between .pug and .js
+" https://vim.fandom.com/wiki/Easily_switch_between_source_and_header_file#Single_line_solution
 nnoremap <Leader>v :vs %:p:s,.js$,.X123X,:s,.pug$,.js,:s,.X123X$,.pug,<CR>
 
 " Use tab for trigger completion with characters ahead and navigate.
