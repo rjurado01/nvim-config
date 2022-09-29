@@ -13,6 +13,8 @@
   },
   "list.insertMappings": {
     "<C-v>": "action:vsplit",
+    "<C-s>": "action:split",
     "<C-t>": "action:tabe"
-  }
+  },
+  "typescript.preferences.importModuleSpecifier": "project-relative"
 }
