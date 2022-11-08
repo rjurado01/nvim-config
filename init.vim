@@ -134,6 +134,10 @@ endfunction
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>a  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>q  <Plug>(coc-fix-current)
 
 " Keymapping for grep word under cursor with interactive mode
 nnoremap <silent> <Leader>S :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
@@ -192,6 +196,3 @@ endfunction
 " Actions that run before save
 " autocmd BufWritePre * call CocAction('format')
 autocmd BufWritePre * call CocAction('runCommand', 'editor.action.organizeImport')
-
-" Apply AutoFix to problem on the current line.
-" nmap <leader>qf  <Plug>(coc-codeaction)
