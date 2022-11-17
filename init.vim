@@ -138,6 +138,8 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>a  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>q  <Plug>(coc-fix-current)
+" Organize imports
+nmap <leader>o :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 
 " Keymapping for grep word under cursor with interactive mode
 nnoremap <silent> <Leader>S :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
