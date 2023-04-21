@@ -27,6 +27,8 @@ let g:coc_global_extensions = [
   \'coc-solargraph',
   \'coc-stylelintplus',
   \'coc-tsserver'
+  \'@yaegassy/coc-volar',
+  \'@yaegassy/coc-volar-tools',
   \]
 
 " Para usar las opciones de vim en lugar de las de vi
