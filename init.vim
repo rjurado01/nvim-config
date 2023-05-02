@@ -199,4 +199,7 @@ endfunction
 
 " Actions that run before save
 " autocmd BufWritePre * call CocAction('format')
-autocmd BufWritePre * call CocAction('runCommand', 'editor.action.organizeImport')
+" autocmd BufWritePre * call CocAction('runCommand', 'editor.action.organizeImport')
+
+" Term
+nnoremap <Leader>t :botright 15sp term://bash<CR>i
