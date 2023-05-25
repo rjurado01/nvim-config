@@ -14,6 +14,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'leafOfTree/vim-vue-plugin'
 call plug#end()
 
 " Coc extensions
