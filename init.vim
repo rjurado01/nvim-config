@@ -15,6 +15,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'leafOfTree/vim-vue-plugin'
+Plug 'sbdchd/neoformat'
 call plug#end()
 
 " Coc extensions
@@ -201,6 +202,7 @@ endfunction
 " Actions that run before save
 " autocmd BufWritePre * call CocAction('format')
 " autocmd BufWritePre * call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.{js,ts,tsx,vue,rs} Neoformat
 
 " Term
 nnoremap <Leader>t :botright 15sp term://bash<CR>i
