@@ -104,6 +104,9 @@ let mapleader="," " Cambia la tecla <Leader> de '\' a ','
 
 let g:endwise_no_mappings = v:true
 
+" Para que use la instalación local de prettier
+let g:neoformat_try_node_exe = 1
+
 nmap <F2> :CocCommand document.renameCurrentWord<CR>
 nmap <F3> :CocCommand explorer<CR>
 nmap <F4> :Gdiff<CR>
