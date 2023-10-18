@@ -1,19 +1,21 @@
 " Cargamos los plugins
 call plug#begin()
 Plug 'tpope/vim-fugitive' " git
-Plug 'scrooloose/nerdcommenter'
+ Plug 'scrooloose/nerdcommenter'
+"" Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'bling/vim-airline' " improved statusbar
-Plug 'bronson/vim-trailing-whitespace'
+" Plug 'bronson/vim-trailing-whitespace'
 Plug 'tpope/vim-endwise'
 " Plug 'rstacruz/vim-closer'
 " Plug 'slim-template/vim-slim'
 Plug 'digitaltoad/vim-pug'
-Plug 'Chiel92/vim-autoformat'
+" Plug 'Chiel92/vim-autoformat'
 " Plug 'elixir-editors/vim-elixir'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'sainnhe/sonokai'
 Plug 'leafOfTree/vim-vue-plugin'
 Plug 'sbdchd/neoformat'
 call plug#end()
@@ -25,12 +27,13 @@ let g:coc_global_extensions = [
   \'coc-git',
   \'coc-json',
   \'coc-lists',
+  \'coc-prettier',
   \'coc-snippets',
   \'coc-solargraph',
   \'coc-stylelintplus',
-  \'coc-tsserver'
+  \'coc-tsserver',
   \'@yaegassy/coc-volar',
-  \'@yaegassy/coc-volar-tools',
+  \'@yaegassy/coc-volar-tools'
   \]
 
 " Para usar las opciones de vim en lugar de las de vi
@@ -54,6 +57,7 @@ set softtabstop=2
 set shiftround
 set synmaxcol=300 " Max line length syntax
 set tabstop=2
+set splitright " Abre el vsplit a la derecha
 
 " COC
 set cmdheight=2 " Give more space for displaying messages
@@ -110,6 +114,7 @@ let g:neoformat_try_node_exe = 1
 nmap <F2> :CocCommand document.renameCurrentWord<CR>
 nmap <F3> :CocCommand explorer<CR>
 nmap <F4> :Gdiff<CR>
+nmap <F5> :CocCommand volar.action.splitEditors<CR>
 nmap <F6> :Autoformat<CR>
 nmap <F9> :CocSearch
 
@@ -122,8 +127,8 @@ nmap <silent> <C-z> <Plug>(coc-refactor)
 " nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gt :call CocAction('jumpDefinition', 'tabe')<CR>
-nmap <silent> gv :call CocAction('jumpDefinition', 'vs')<CR>
+nmap <silent> gt :call CocActionAsync('jumpDefinition', 'tabe')<CR>
+nmap <silent> gv :call CocActionAsync('jumpDefinition', 'vs')<CR>
 
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
@@ -146,7 +151,7 @@ nmap <leader>a  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>q  <Plug>(coc-fix-current)
 " Organize imports
-nmap <leader>o :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
+nmap <leader>o :call CocActionAsync('runCommand', 'editor.action.organizeImport')<CR>
 
 " Keymapping for grep word under cursor with interactive mode
 nnoremap <silent> <Leader>S :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
@@ -201,11 +206,3 @@ function! s:GrepArgs(...)
         \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
   return join(list, "\n")
 endfunction
-
-" Actions that run before save
-" autocmd BufWritePre * call CocAction('format')
-" autocmd BufWritePre * call CocAction('runCommand', 'editor.action.organizeImport')
-autocmd BufWritePre *.{js,ts,tsx,vue,rs} Neoformat
-
-" Term
-nnoremap <Leader>t :botright 15sp term://bash<CR>i
