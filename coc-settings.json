@@ -4,8 +4,8 @@
   "solargraph.diagnostics": true,
   "solargraph.completion": true,
   "snippets.priority": 9999,
-  "suggest.fixInsertedWord": true,
   "eslint.autoFixOnSave": true,
+  "coc.preferences.formatOnSave": true,
   "explorer.keyMappings.global": {
     "<c-v>": "open:vsplit",
     "<c-s>": "open:split",
