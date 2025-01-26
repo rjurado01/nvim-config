@@ -62,3 +62,8 @@ vim.o.background = "dark"
 
 -- Deja siempre el hueco de los iconos a la izquierda
 vim.opt.signcolumn = "yes"
+
+-- Desactiva el focus en el cuadro del hover
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+  vim.lsp.handlers.hover, { focusable = false }
+)

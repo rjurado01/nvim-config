@@ -1,6 +1,6 @@
 return {
   "folke/snacks.nvim",
-  enabled = false,
+  enabled = true,
   ---@type snacks.Config
   opts = {
     indent = { enabled = true },
@@ -10,5 +10,6 @@ return {
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
-  }
+  },
+  config = true
 }

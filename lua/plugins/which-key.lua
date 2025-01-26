@@ -6,6 +6,16 @@ return  {
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
     preset = 'helix',
+
+    spec = {
+      {
+        mode = { "n", "v" },
+        { "<leader>c", group = "Code" },
+        { "<leader>g", group = "Git" },
+        { "<leader>s", group = "Search" },
+        { "g", group = "goto" },
+      }
+    }
   },
   keys = {
     {
@@ -15,5 +25,9 @@ return  {
       end,
       desc = "Buffer Local Keymaps (which-key)",
     },
+    {
+      "<leader>c",
+      group = "Code"
+    }
   },
 }
