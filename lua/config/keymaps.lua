@@ -1,6 +1,6 @@
 -- Tabs
-vim.keymap.set('n', '<C-Right>', vim.cmd.tabnext, { noremap = true, silent = true })
-vim.keymap.set('n', '<C-Left>', vim.cmd.tabprev, { noremap = true, silent = true })
+vim.keymap.set('n', '1', vim.cmd.tabnext, { noremap = true, silent = true })
+vim.keymap.set('n', '2', vim.cmd.tabprev, { noremap = true, silent = true })
 
 -- Lspsaga
 -- vim.keymap.set('n', '<leader>r', '<Cmd>:Lspsaga rename<CR>')
@@ -12,8 +12,15 @@ vim.keymap.set('n', '<C-Left>', vim.cmd.tabprev, { noremap = true, silent = true
 
 -- Tools
 vim.keymap.set('n', '<leader>e', '<Cmd>Neotree toggle<CR>', {desc = 'Neotree'})
-vim.keymap.set('n', '<leader>t', '<Cmd>:Lspsaga term_toggle<CR>', {desc = 'Term'})
+--vim.keymap.set('n', '<leader>t', '<Cmd>:Lspsaga term_toggle<CR>', {desc = 'Term'})
+vim.keymap.set('n', '<leader>t', '<Cmd>:FloatermToggle<CR>', {desc = 'Term'})
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {desc = 'Rename'})
+vim.keymap.set("n", "<leader>q", '<Cmd>q<CR>', {desc = 'Quit'})
+vim.keymap.set("n", "<leader>w", '<Cmd>w<CR>', {desc = 'Save'})
+vim.keymap.set('n', '<leader>a', '<Cmd>:Lspsaga diagnostic_jump_next<CR>', {desc = 'Jump diagnostic'})
+
+-- Term
+vim.keymap.set('t', '<esc>', '<C-\\><C-n>:FloatermToggle<CR>', {noremap = true, silent = true})
 
 -- Search
 vim.keymap.set('n', '<leader>sf', '<Cmd>:FzfLua files<CR>', {desc = 'Files'})

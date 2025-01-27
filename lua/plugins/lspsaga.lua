@@ -13,7 +13,7 @@ return {
         keys = {
           quit = '<esc>'
         }
-      }
+      },
     })
   end,
   dependencies = {
