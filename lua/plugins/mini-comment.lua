@@ -19,13 +19,4 @@ return {
       },
     }
   },
-  {
-    'echasnovski/mini.surround', version = '*',
-    opts = {
-      mappings = {
-        add = '<leader>cs', -- Add surrounding in Normal and Visual modes
-      }
-    },
-    config = true
-  },
 }

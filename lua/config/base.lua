@@ -67,3 +67,28 @@ vim.opt.signcolumn = "yes"
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
   vim.lsp.handlers.hover, { focusable = false }
 )
+
+--[[
+-- Hace que los diagnostic no aparezcan en línea
+vim.diagnostic.config({
+  virtual_text = false,
+  float = { border = "rounded" },
+})
+
+-- Abrimos el aviso cuando el cursor está encima
+vim.api.nvim_create_autocmd({ "CursorHold" }, {
+  pattern = "*",
+  callback = function()
+    -- Verifica si hay una ventana flotante abierta
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+      if vim.api.nvim_win_get_config(win).relative ~= "" then
+        return -- Si ya hay una ventana flotante, no abrir otra
+      end
+    end
+
+    vim.diagnostic.open_float(nil, { scope = "cursor", focus = false, border = "rounded" })
+  end,
+})
+
+vim.o.updatetime = 500
+--]]

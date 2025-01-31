@@ -29,5 +29,25 @@ return {
   {
     "MarcoKorinth/onehalf.nvim",
     lazy = false
-  }
+  },
+
+  {
+    'sainnhe/sonokai',
+  },
+
+  {
+    "EdenEast/nightfox.nvim",
+    opts = {
+      options = {
+        transparent = false,
+      },
+      palettes = {
+        nordfox = {
+          bg1 = "#2e3440",
+        }
+      },
+    }
+  },
+
+  { 'sonph/onehalf' },
 }

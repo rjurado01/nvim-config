@@ -38,7 +38,11 @@ return {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if client then
+            -- desactiva el resaltado de sintaxis del lsp (dejamos el de treesitter)
             client.server_capabilities.semanticTokensProvider = nil
+
+            -- desactiva el resaltado de la palabra actual
+            client.server_capabilities.documentHighlightProvider = nil
           end
         end
       })
