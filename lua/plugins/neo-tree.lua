@@ -2,6 +2,7 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
+    enabled = true,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -15,6 +16,17 @@ return {
         bind_to_cwd = false,
         follow_current_file = { enabled = true },
         use_libuv_file_watcher = true,
+        window = {
+          position = "float",
+          mappings = {
+            ["v"] = "open_vsplit",
+            ["l"] = "open",
+          },
+          fuzzy_finder_mappings = {
+            ["<C-j>"] = "move_cursor_down",
+            ["<C-k>"] = "move_cursor_up",
+          },
+        }
       },
     },
     config = function(_, opts)

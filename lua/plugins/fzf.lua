@@ -8,5 +8,13 @@ return {
     fzf_opts = {
       ['--exact'] = true,
     },
+    winopts = {
+      height = 0.9,
+      width = 0.9,
+      preview = {
+        layout = "vertical",
+        vertical = "down:70%",
+      },
+    },
   }
 }

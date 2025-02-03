@@ -50,9 +50,8 @@ return {
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
         { name = 'nvim_lsp' },
-        { name = 'supermaven' }
+        --{ name = 'supermaven' }
       }),
-
       -- configure lspkind for vs-code like pictograms in completion menu
       formatting = {
         format = lspkind.cmp_format({
@@ -60,6 +59,9 @@ return {
           ellipsis_char = "...",
         }),
       },
+      experimental = {
+        ghost_text = true,
+      }
     })
   end,
 }

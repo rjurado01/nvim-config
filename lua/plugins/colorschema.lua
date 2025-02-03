@@ -1,9 +1,21 @@
 return {
   {
     'romainl/Apprentice',
+    enabled = true,
     config = function()
-      vim.cmd([[colorscheme apprentice]])
+      -- Cargar el tema Apprentice
+      vim.cmd("colorscheme apprentice")
+
+      -- Personalizar los colores de diffview con fondos casi #262626 y matices sutiles
+      vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#263226", fg = "#d7ffaf", blend = 10 })    -- Fondo verde oscuro
+      vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#322626", fg = "#ffafaf", blend = 10 }) -- Fondo rojo oscuro
+      vim.api.nvim_set_hl(0, "DiffChange", { bg = "#262632", fg = "#afafff", blend = 10 }) -- Fondo azul oscuro
+      vim.api.nvim_set_hl(0, "DiffText", { bg = "#323226", fg = "#ffffaf", blend = 10 })   -- Fondo amarillo oscuro
     end,
+  },
+
+  {
+    'rose-pine/neovim',
   },
 
   {
@@ -18,7 +30,7 @@ return {
 
   {
     'navarasu/onedark.nvim',
-    enabled = false,
+    enabled = true,
     config = function()
       require('onedark').setup {
         style = 'warmer'
@@ -28,7 +40,7 @@ return {
 
   {
     "MarcoKorinth/onehalf.nvim",
-    lazy = false
+    lazy = true
   },
 
   {

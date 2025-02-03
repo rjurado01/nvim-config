@@ -14,7 +14,6 @@ vim.api.nvim_exec([[ cnoreabbrev qt tabclose ]], false)
 
 -- Tools
 vim.keymap.set('n', '<leader>e', '<Cmd>Neotree toggle<CR>', {desc = 'Neotree'})
---vim.keymap.set('n', '<leader>t', '<Cmd>:Lspsaga term_toggle<CR>', {desc = 'Term'})
 vim.keymap.set('n', '<leader>t', '<Cmd>:FloatermToggle<CR>', {desc = 'Term'})
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {desc = 'Rename'})
 vim.keymap.set("n", "<leader>q", '<Cmd>q<CR>', {desc = 'Quit'})
