@@ -25,6 +25,7 @@ vim.keymap.set('n', '<leader>f', '<Cmd>:FzfLua files<CR>', {desc = 'Find Files'}
 vim.keymap.set('n', '<leader>l', '<Cmd>:Lazy<CR>', {desc = 'Lazy'})
 vim.keymap.set('n', '<leader>p', '<Cmd>:Lspsaga peek_definition<CR>', {desc = 'Peek definition'})
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {desc = 'Open float diagnostic'})
+vim.keymap.set('n', '<leader>ñ', '<Cmd>Themery<CR>', {desc = 'Themery'})
 
 vim.keymap.set("n", "<leader>gv", function()
   vim.cmd("vsplit") -- Abre un vsplit
@@ -64,7 +65,8 @@ vim.keymap.set('n', '<leader>sb', '<Cmd>:FzfLua buffers<CR>', {desc = 'Buffers'}
 
 -- Git
 vim.keymap.set('n', '<leader>gs', '<Cmd>:FzfLua git_status<CR>', {desc = 'Git status'})
-vim.keymap.set('n', '<leader>gb', '<Cmd>:Git blame<CR>', {desc = 'Git blame'})
+vim.keymap.set('n', '<leader>gb', '<Cmd>:Gitsigns blame<CR>', {desc = 'Git blame'})
+-- vim.keymap.set('n', '<leader>gb', '<Cmd>:Git blame<CR>', {desc = 'Git blame'})
 vim.keymap.set('n', '<leader>gc', '<Cmd>:DiffviewOpen<CR>', {desc = 'Git changes'})
 
 -- Code

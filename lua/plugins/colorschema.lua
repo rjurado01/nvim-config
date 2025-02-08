@@ -39,11 +39,6 @@ return {
   },
 
   {
-    "MarcoKorinth/onehalf.nvim",
-    lazy = true
-  },
-
-  {
     'sainnhe/sonokai',
   },
 
@@ -61,5 +56,16 @@ return {
     }
   },
 
-  { 'sonph/onehalf' },
+  {
+    "topazape/oldtale.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
 }
