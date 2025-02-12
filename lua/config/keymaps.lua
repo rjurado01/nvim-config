@@ -1,6 +1,6 @@
 -- Tabs
-vim.keymap.set('n', '1', vim.cmd.tabnext, { noremap = true, silent = true })
-vim.keymap.set('n', '2', vim.cmd.tabprev, { noremap = true, silent = true })
+vim.keymap.set('n', '2', vim.cmd.tabnext, { noremap = true, silent = true })
+vim.keymap.set('n', '1', vim.cmd.tabprev, { noremap = true, silent = true })
 
 vim.api.nvim_exec([[ cnoreabbrev qt tabclose ]], false)
 
@@ -26,6 +26,8 @@ vim.keymap.set('n', '<leader>l', '<Cmd>:Lazy<CR>', {desc = 'Lazy'})
 vim.keymap.set('n', '<leader>p', '<Cmd>:Lspsaga peek_definition<CR>', {desc = 'Peek definition'})
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {desc = 'Open float diagnostic'})
 vim.keymap.set('n', '<leader>ñ', '<Cmd>Themery<CR>', {desc = 'Themery'})
+
+vim.keymap.set('n', '<tab>', '<C-w>', {desc = 'Window'})
 
 vim.keymap.set("n", "<leader>gv", function()
   vim.cmd("vsplit") -- Abre un vsplit
