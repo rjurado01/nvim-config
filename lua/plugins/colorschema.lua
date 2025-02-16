@@ -33,7 +33,8 @@ return {
     enabled = true,
     config = function()
       require('onedark').setup {
-        style = 'warmer'
+        style = 'dark',
+        transparent = false,
       }
     end
   },
@@ -68,4 +69,30 @@ return {
     priority = 1000,
     opts = {},
   },
+
+  {'loctvl842/monokai-pro.nvim'},
+
+  {'marko-cerovac/material.nvim'},
+
+  {
+    "aktersnurra/no-clown-fiesta.nvim",
+    priority = 1000,
+    config = true,
+    lazy = false,
+  },
+
+  {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
+    config = true 
+  },
+
+  { 
+    'olivercederborg/poimandres.nvim',
+    lazy = false,
+    priority = 1000,
+  },
+
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
 }

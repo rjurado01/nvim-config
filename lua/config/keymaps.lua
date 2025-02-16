@@ -1,13 +1,13 @@
 -- Tabs
-vim.keymap.set('n', '2', vim.cmd.tabnext, { noremap = true, silent = true })
-vim.keymap.set('n', '1', vim.cmd.tabprev, { noremap = true, silent = true })
+vim.keymap.set('n', '"', vim.cmd.tabnext, { noremap = true, silent = true })
+vim.keymap.set('n', '!', vim.cmd.tabprev, { noremap = true, silent = true })
 
 vim.api.nvim_exec([[ cnoreabbrev qt tabclose ]], false)
 
 -- Lspsaga
 -- vim.keymap.set('n', '<leader>r', '<Cmd>:Lspsaga rename<CR>')
 -- vim.keymap.set({'n', 'v'}, '<leader>a', '<Cmd>:Lspsaga code_action<CR>')
--- vim.keymap.set({'n', 'v'}, '<leader>A', vim.lsp.buf.code_action)
+vim.keymap.set({'n', 'v'}, '<leader>A', vim.lsp.buf.code_action)
 -- vim.keymap.set('n', '<leader>gp', '<Cmd>:Lspsaga peek_definition<CR>')
 -- vim.keymap.set('n', '<leader>x', '<Cmd>:Lspsaga finder<CR>')
 -- vim.keymap.set('n', '<leader>k', '<Cmd>:Lspsaga hover_doc<CR>')
@@ -81,6 +81,8 @@ vim.keymap.set('n', '<leader>ce', '<Cmd>:EslintFixAll<CR>', {desc = 'EslintFixAl
 vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, {desc = 'Rename'})
 vim.keymap.set('n', '<Leader>cs', vim.lsp.buf.signature_help, {desc = 'Toggle signature' })
 vim.keymap.set('n', '<leader>cd', '<Cmd>:Lspsaga show_line_diagnostics<CR>', {desc = 'Open float diagnostic'})
+vim.keymap.set('n', '<leader>ct', '<cmd>tab split | lua vim.lsp.buf.definition()<CR>', {})
+vim.keymap.set('n', '<leader>cv', '<cmd>vsplit | lua vim.lsp.buf.definition()<CR>', {})
 
 -- TypescriptTool
 vim.keymap.set('n', '<leader>i', function()
