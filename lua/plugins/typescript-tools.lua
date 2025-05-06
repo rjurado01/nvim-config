@@ -3,6 +3,14 @@ return {
   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   enabled = true,
   config = true,
+  opts = {
+    settings = {
+      tsserver_file_preferences = {
+        -- https://github.com/pmizio/typescript-tools.nvim?tab=readme-ov-file#%EF%B8%8F-configuration
+        importModuleSpecifierPreference = 'project-relative',
+      }
+    }
+  }
   -- opts = {
   --   server = {
   --     cmd = { "typescript-language-server", "--log", "verbose" },

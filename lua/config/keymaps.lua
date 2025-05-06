@@ -13,7 +13,8 @@ vim.keymap.set({'n', 'v'}, '<leader>A', vim.lsp.buf.code_action)
 -- vim.keymap.set('n', '<leader>k', '<Cmd>:Lspsaga hover_doc<CR>')
 
 -- Tools
-vim.keymap.set('n', '<leader>e', '<Cmd>Neotree toggle<CR>', {desc = 'Neotree'})
+vim.keymap.set('n', '<leader>e', '<Cmd>lua Snacks.explorer()<CR>', {desc = 'Neotree'})
+-- vim.keymap.set('n', '<leader>e', '<Cmd>Neotree toggle<CR>', {desc = 'Neotree'})
 vim.keymap.set('n', '<leader>t', '<Cmd>:FloatermToggle<CR>', {desc = 'Term'})
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {desc = 'Rename'})
 vim.keymap.set("n", "<leader>q", '<Cmd>q<CR>', {desc = 'Quit'})
@@ -26,6 +27,7 @@ vim.keymap.set('n', '<leader>l', '<Cmd>:Lazy<CR>', {desc = 'Lazy'})
 vim.keymap.set('n', '<leader>p', '<Cmd>:Lspsaga peek_definition<CR>', {desc = 'Peek definition'})
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {desc = 'Open float diagnostic'})
 vim.keymap.set('n', '<leader>ñ', '<Cmd>Themery<CR>', {desc = 'Themery'})
+vim.keymap.set('n', '<leader>Ñ', '<Cmd>lua Snacks.picker.colorschemes()<CR>', {desc = 'Themery'})
 
 vim.keymap.set('n', '<tab>', '<C-w>', {desc = 'Window'})
 
@@ -57,8 +59,8 @@ end, {})
 vim.keymap.set('t', '<esc>', '<C-\\><C-n>:FloatermToggle<CR>', {noremap = true, silent = true})
 
 -- Search
-vim.keymap.set('n', '<leader>sf', '<Cmd>:FzfLua files<CR>', {desc = 'Files'})
-vim.keymap.set('n', '<leader>sg', '<Cmd>:FzfLua live_grep<CR>', {desc = 'Grep'})
+vim.keymap.set('n', '<leader>sf', '<Cmd>lua Snacks.picker.files()<CR>', {desc = 'Files'})
+vim.keymap.set('n', '<leader>sg', '<Cmd>lua Snacks.picker.grep()<CR>', {desc = 'Grep'})
 vim.keymap.set('n', '<leader>sG', '<Cmd>:FzfLua grep_cword<CR>', {desc = 'Word under cursor'})
 vim.keymap.set('n', '<leader>sd', '<Cmd>:FzfLua lsp_definitions<CR>', {desc = 'Definitions'})
 vim.keymap.set('n', '<leader>si', '<Cmd>:FzfLua lsp_implementations<CR>', {desc = 'Definitions'})
@@ -82,7 +84,7 @@ vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, {desc = 'Rename'})
 vim.keymap.set('n', '<Leader>cs', vim.lsp.buf.signature_help, {desc = 'Toggle signature' })
 vim.keymap.set('n', '<leader>cd', '<Cmd>:Lspsaga show_line_diagnostics<CR>', {desc = 'Open float diagnostic'})
 vim.keymap.set('n', '<leader>ct', '<cmd>tab split | lua vim.lsp.buf.definition()<CR>', {})
-vim.keymap.set('n', '<leader>cv', '<cmd>vsplit | lua vim.lsp.buf.definition()<CR>', {})
+vim.keymap.set('n', '<leader>cv', '<cmd>vsplit | lua vim.lsp.buf.implementation()<CR>', {})
 
 -- TypescriptTool
 vim.keymap.set('n', '<leader>i', function()

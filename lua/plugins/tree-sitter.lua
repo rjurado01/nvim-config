@@ -8,7 +8,8 @@ return {
   opts = {
     ensure_installed = {
       'lua',
-      'typescript'
+      'typescript',
+      'regex',
     },
     highlight = {
       enable = true,
