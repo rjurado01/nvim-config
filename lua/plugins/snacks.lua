@@ -14,6 +14,11 @@ return {
     words = { enabled = true },
     picker = {
       enabled = true,
+      actions = {
+        only_select = function(picker)
+          picker.list:select()
+        end
+      },
       matcher = {
         fuzzy = false,
       },
@@ -77,6 +82,7 @@ return {
               keys = {
                 ["v"] = "edit_vsplit",
                 ["t"] = "edit_tab",
+                ["x"] = "only_select",
               },
             },
           },
