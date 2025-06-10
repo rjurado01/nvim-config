@@ -68,6 +68,9 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
   vim.lsp.handlers.hover, { focusable = false }
 )
 
+-- Usar truecolor
+vim.o.termguicolors = true
+
 -- hace que al selecionar una opción del vim.lsp.buf.implementation() se cierre el quickfix
 vim.api.nvim_create_autocmd(
   "FileType", {

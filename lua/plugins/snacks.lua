@@ -6,8 +6,8 @@ return {
   ---@type snacks.Config
   opts = {
     indent = { enabled = true },
-    input = { enabled = true },
-    notifier = { enabled = true },
+    input = { enabled = false },
+    notifier = { enabled = false },
     scope = { enabled = true },
     scroll = { enabled = true },
     statuscolumn = { enabled = true },

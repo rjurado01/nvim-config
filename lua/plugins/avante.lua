@@ -3,13 +3,14 @@ return {
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   opts = {
-    -- add any opts here
-    -- for example
-    provider = "copilot",
-    copilot = {
-      -- model = "gpt-4.1",
-      model = "gemini-2.5-pro",
+    providers = {
+      copilot = {
+        -- model = "gpt-4.1",
+        -- model = "gemini-2.5-pro",
+        model = "claude-sonnet-4",
+      },
     },
+    provider = "copilot",
     selector = {
       provider = "snacks",
       provider_opts = {},
@@ -20,7 +21,6 @@ return {
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
-    "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,

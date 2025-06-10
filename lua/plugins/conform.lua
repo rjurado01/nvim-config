@@ -2,20 +2,21 @@ return {
   'stevearc/conform.nvim',
   opts = {
     formatters_by_ft = {
-      typescript = { 'prettier', 'eslint_d' },
+      typescript = { 'eslint_d', 'prettier' },
     },
     format_on_save = {
       timeout_ms = 1000,
       lsp_format = "fallback",
     },
+    formatters = {
+      eslint_d = {
+        command = "eslint_d",
+        args = { "--fix-to-stdout", "--stdin", "--stdin-filename", "$FILENAME" },
+        stdin = true,
+      },
+    },
     config = function(_, opts)
       require('conform').setup(opts)
-
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = vim.api.nvim_create_augroup("EslintFixAll", { clear = true }),
-        pattern = { "*.ts", "*.js" },
-        command = "silent! EslintFixAll",
-      })
     end
   },
 }

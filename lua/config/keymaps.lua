@@ -10,7 +10,7 @@ vim.api.nvim_exec([[ cnoreabbrev qt tabclose ]], false)
 vim.keymap.set({'n', 'v'}, '<leader>A', vim.lsp.buf.code_action)
 -- vim.keymap.set('n', '<leader>gp', '<Cmd>:Lspsaga peek_definition<CR>')
 -- vim.keymap.set('n', '<leader>x', '<Cmd>:Lspsaga finder<CR>')
--- vim.keymap.set('n', '<leader>k', '<Cmd>:Lspsaga hover_doc<CR>')
+vim.keymap.set('n', '<leader>k', '<Cmd>:Lspsaga hover_doc<CR>')
 
 -- Tools
 vim.keymap.set('n', '<leader>e', '<Cmd>lua Snacks.explorer()<CR>', {desc = 'Neotree'})
@@ -85,6 +85,7 @@ vim.keymap.set('n', '<Leader>cs', vim.lsp.buf.signature_help, {desc = 'Toggle si
 vim.keymap.set('n', '<leader>cd', '<Cmd>:Lspsaga show_line_diagnostics<CR>', {desc = 'Open float diagnostic'})
 vim.keymap.set('n', '<leader>ct', '<cmd>tab split | lua vim.lsp.buf.definition()<CR>', {})
 vim.keymap.set('n', '<leader>cv', '<cmd>vsplit | lua vim.lsp.buf.implementation()<CR>', {})
+vim.keymap.set('n', '<leader>cg', '<cmd>lua vim.lsp.buf.implementation()<CR>', {})
 
 -- TypescriptTool
 vim.keymap.set('n', '<leader>i', function()
