@@ -17,6 +17,24 @@ return {
       actions = {
         only_select = function(picker)
           picker.list:select()
+        end,
+
+        -- https://github.com/folke/snacks.nvim/blob/bc0630e43be5699bb94dadc302c0d21615421d93/lua/snacks/picker/actions.lua#L321
+        discard_changes = function(picker, item)
+          -- print(vim.inspect(item))
+
+          local file = item.file
+          vim.fn.system("git checkout -- " .. file)
+          
+          -- Reload buffer if the file is open in nvim
+          local bufnr = vim.fn.bufnr(file)
+          if bufnr ~= -1 and vim.api.nvim_buf_is_loaded(bufnr) then
+            vim.api.nvim_buf_call(bufnr, function()
+              vim.cmd('checktime')
+            end)
+          end
+          
+          picker:find({ refresh = true })
         end
       },
       matcher = {
@@ -37,6 +55,9 @@ return {
           }
         },
         grep = {
+          -- -g=scripts/*
+          -- -g=**/pyf-core/**/*.entity*
+          -- -t=ts
           layout = {
             layout = {
               backdrop = false,
@@ -82,7 +103,18 @@ return {
               keys = {
                 ["v"] = "edit_vsplit",
                 ["t"] = "edit_tab",
+                ["<C-t>"] = "edit_tab",
                 ["x"] = "only_select",
+              },
+            },
+          },
+        },
+        git_status = {
+          win = {
+            input = {
+              keys = {
+                ["<Tab>"] = { "git_stage", mode = { "n", "i" } },
+                ["<S-Tab>"] = { "discard_changes", mode = { "n", "i" } },
               },
             },
           },
