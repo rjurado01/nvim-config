@@ -10,7 +10,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = { 'ts_ls', 'eslint' },
+        ensure_installed = { 'eslint' },
       })
     end
   },
@@ -29,10 +29,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
-      local lsconfig = require('lspconfig')
-
-      -- lsconfig.ts_ls.setup({})
-      lsconfig.eslint.setup({})
+      vim.lsp.enable('eslint')
 
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
