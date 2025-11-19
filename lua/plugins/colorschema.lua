@@ -8,12 +8,20 @@ return {
         options = {
           transparent = false,
         },
-        palettes = {
-          nordfox = {
-            bg1 = "#2e3440",
-          }
-        },
+        -- palettes = {
+        --   nordfox = {
+        --     bg1 = "#2e3440",
+        --   }
+        -- },
       })
+
+      -- Personalizar los colores de diffview con fondos casi #262626 y matices sutiles
+      -- vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#263226", fg = "#d7ffaf", blend = 10 })    -- Fondo verde oscuro
+      -- vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#322626", fg = "#ffafaf", blend = 10 }) -- Fondo rojo oscuro
+      -- vim.api.nvim_set_hl(0, "DiffChange", { bg = "#262632", fg = "#afafff", blend = 10 }) -- Fondo azul oscuro
+      -- vim.api.nvim_set_hl(0, "DiffText", { bg = "#323226", fg = "#ffffaf", blend = 10 })   -- Fondo amarillo oscuro
+
+      -- vim.api.nvim_set_hl(0, "SnacksDiffAdd", { fg = "#FF0000" })
     end
   },
 

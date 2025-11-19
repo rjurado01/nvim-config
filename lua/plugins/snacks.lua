@@ -14,6 +14,15 @@ return {
     words = { enabled = true },
     picker = {
       enabled = true,
+      previewers = {
+        diff = {
+          -- fancy: Snacks fancy diff (borders, multi-column line numbers, syntax highlighting)
+          -- syntax: Neovim's built-in diff syntax highlighting
+          -- terminal: external command (git's pager for git commands, `cmd` for other diffs)
+          style = "terminal", ---@type "fancy"|"syntax"|"terminal"
+          cmd = { "git", "diff" },
+        },
+      },
       actions = {
         only_select = function(picker)
           picker.list:select()
@@ -75,6 +84,24 @@ return {
             }
           },
         },
+        grep_word = {
+          layout = {
+            layout = {
+              backdrop = false,
+              width = 0.8,
+              min_width = 80,
+              height = 0.8,
+              min_height = 30,
+              box = "vertical",
+              border = "rounded",
+              title = "{title} {live} {flags}",
+              title_pos = "center",
+              { win = "input", height = 1, border = "bottom" },
+              { win = "list", border = "none" },
+              { win = "preview", title = "{preview}", height = 0.8, border = "top" },
+            }
+          },
+        },
         files = {
           layout = {
             layout = {
@@ -110,6 +137,8 @@ return {
           },
         },
         git_status = {
+          finder = "git_status",
+          format = "git_status",
           win = {
             input = {
               keys = {
