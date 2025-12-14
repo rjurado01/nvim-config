@@ -1,6 +1,7 @@
 return {
   {'tpope/vim-fugitive'},
 
+  -- https://github.com/sindrets/diffview.nvim#configuration
   {'sindrets/diffview.nvim'},
 
   {
