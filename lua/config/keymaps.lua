@@ -1,10 +1,10 @@
 --------------------------------- Navegation ---------------------------------
 
-vim.keymap.set('n', '"', vim.cmd.tabnext, { noremap = true, silent = true, desc = 'TabNext' })
-vim.keymap.set('n', '!', vim.cmd.tabprev, { noremap = true, silent = true, desc = 'TabPrev' })
+vim.keymap.set('n', '<C-k>', vim.cmd.tabnext, { noremap = true, silent = true, desc = 'TabNext' })
+vim.keymap.set('n', '<C-j>', vim.cmd.tabprev, { noremap = true, silent = true, desc = 'TabPrev' })
 
-vim.keymap.set('n', '1', '<C-w>h', {desc = 'Go to left window'})
-vim.keymap.set('n', '2', '<C-w>l', {desc = 'Go to right window'})
+vim.keymap.set('n', '!', '<C-w>h', {desc = 'Go to left window'})
+vim.keymap.set('n', '"', '<C-w>l', {desc = 'Go to right window'})
 
 -- cerrar la pestaña actual con qt
 vim.api.nvim_exec([[ cnoreabbrev qt tabclose ]], false)
@@ -65,46 +65,47 @@ end, {})
 
 --------------------------------- Term ---------------------------------
 
-local function goToTerminal(name)
-  require("floaterm").open()
+-- Atajos de terminal definidos en lua/plugins/floaterm.lua
 
-  local utils = require("floaterm.utils")
-  local terminal = utils.get_term_by_key(name, "name")
-
-  if terminal then
-    utils.switch_buf(terminal[2].buf)
-  end
-end
-
-vim.keymap.set('n', '<leader>t', '<Cmd>:FloatermToggle<CR>', {desc = 'Term'})
-vim.keymap.set('t', '<esc>', '<C-\\><C-n>:FloatermToggle<CR>', {noremap = true, silent = true})
-
-vim.keymap.set({ "n", "x" }, "<leader>to", function()
-  goToTerminal("Opencode") 
-end, { desc = "Terminal Opencode" })
-
-vim.keymap.set({ "n", "x" }, "<leader>ts", function()
-  goToTerminal("Server") 
-end, { desc = "Terminal Server" })
-
-vim.keymap.set({ "n", "x" }, "<leader>tr", function()
-  goToTerminal("Run") 
-end, { desc = "Terminal Run" })
-
-vim.keymap.set({ "n", "x" }, "<leader>tt", function()
-  goToTerminal("Test") 
-end, { desc = "Terminal Run" })
-
-vim.keymap.set({ "n", "x" }, "<leader>td", function()
-  goToTerminal("Docker") 
-end, { desc = "Terminal Docker" })
-
--- function _G.set_terminal_keymaps()
---   local opts = {buffer = 0}
---   vim.keymap.set('t', '<esc>', [[<Cmd>wincmd k<CR>]], opts)
+-- vim.keymap.set('n', '<leader>t', '<Cmd>:FloatermToggle<CR>', {desc = 'Term'})
+-- vim.keymap.set('t', '<ESC><ESC>', '<Cmd>:FloatermToggle<CR>', {noremap = true, silent = true})
+--
+-- local function goToTerminal(name)
+--   require("floaterm").open()
+--
+--   local utils = require("floaterm.utils")
+--   local terminal = utils.get_term_by_key(name, "name")
+--
+--   if terminal then
+--     utils.switch_buf(terminal[2].buf)
+--   end
 -- end
 --
--- vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+-- vim.keymap.set({ "n", "x" }, "<leader>to", function()
+--   goToTerminal("Opencode") 
+-- end, { desc = "Terminal Opencode" })
+--
+-- vim.keymap.set({ "n", "x" }, "<leader>ts", function()
+--   goToTerminal("Server") 
+-- end, { desc = "Terminal Server" })
+--
+-- vim.keymap.set({ "n", "x" }, "<leader>tr", function()
+--   goToTerminal("Run") 
+-- end, { desc = "Terminal Run" })
+--
+-- vim.keymap.set({ "n", "x" }, "<leader>tt", function()
+--   goToTerminal("Test") 
+-- end, { desc = "Terminal Run" })
+--
+-- vim.keymap.set({ "n", "x" }, "<leader>td", function()
+--   goToTerminal("Docker") 
+-- end, { desc = "Terminal Docker" })
+--
+-- vim.keymap.set({ "n", "x" }, "ga", function()
+--   require("opencode").prompt("@this")
+--
+--   goToTerminal("Opencode") 
+-- end, { desc = "Add to opencode" })
 
 --------------------------------- Search ---------------------------------
 
@@ -140,36 +141,36 @@ vim.keymap.set('n', '<leader>cg', '<cmd>lua vim.lsp.buf.implementation()<CR>', {
 
 --------------------------------- Opencode ---------------------------------
 
-vim.keymap.set({ "n", "x" }, "<leader>an", function()
-  require("opencode").command("session.new")
-  require("opencode").prompt("@this")
+-- vim.keymap.set({ "n", "x" }, "<leader>an", function()
+--   require("opencode").command("session.new")
+--   require("opencode").prompt("@this")
+--
+--   require("floaterm").open()
+--
+--   local utils = require("floaterm.utils")
+--   local terminal = utils.get_term_by_key("Opencode", "name")
+--
+--   if terminal then
+--     utils.switch_buf(terminal[2].buf)
+--   end
+-- end, { desc = "Add to opencode" })
+--
+-- vim.keymap.set({ "n", "x" }, "<leader>at", function()
+--   require("floaterm").open()
+--
+--   local utils = require("floaterm.utils")
+--   local terminal = utils.get_term_by_key("Opencode", "name")
+--
+--   if terminal then
+--     utils.switch_buf(terminal[2].buf)
+--
+--     require("floaterm.api").send_cmd({ cmd = "opencode" })
+--   end
+-- end, { desc = "Add to opencode" })
+--
+-- vim.keymap.set({ "n", "x" }, "<leader>aa", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode" })
+-- vim.keymap.set({ "n", "x" }, "<leader>ax", function() require("opencode").select() end, { desc = "Execute opencode action…" })
 
-  require("floaterm").open()
-
-  local utils = require("floaterm.utils")
-  local terminal = utils.get_term_by_key("Opencode", "name")
-
-  if terminal then
-    utils.switch_buf(terminal[2].buf)
-  end
-end, { desc = "Add to opencode" })
-
-vim.keymap.set({ "n", "x" }, "<leader>at", function()
-  require("floaterm").open()
-
-  local utils = require("floaterm.utils")
-  local terminal = utils.get_term_by_key("Opencode", "name")
-
-  if terminal then
-    utils.switch_buf(terminal[2].buf)
-
-    require("floaterm.api").send_cmd({ cmd = "opencode" })
-  end
-end, { desc = "Add to opencode" })
-
-vim.keymap.set({ "n", "x" }, "<leader>aa", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode" })
-vim.keymap.set({ "n", "x" }, "<leader>ax", function() require("opencode").select() end, { desc = "Execute opencode action…" })
-vim.keymap.set({ "n", "x" }, "ga", function() require("opencode").prompt("@this") end, { desc = "Add to opencode" })
 -- vim.keymap.set("n",        "<S-C-u>", function() require("opencode").command("session.half.page.up") end,   { desc = "opencode half page up" })
 -- vim.keymap.set("n",        "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "opencode half page down" })
 -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".

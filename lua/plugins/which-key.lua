@@ -7,6 +7,13 @@ return  {
     -- refer to the configuration section below
     preset = 'helix',
 
+    -- Desactivar en modo terminal
+    -- para evitar lag al escribir espacio en el terminal
+    -- disable = {
+    --   ft = {},
+    --   bt = { "terminal" },
+    -- },
+
     spec = {
       {
         mode = { "n", "v" },

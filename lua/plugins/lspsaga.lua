@@ -1,9 +1,11 @@
 return {
   'nvimdev/lspsaga.nvim',
   enabled = true,
+  lazy = false,
   config = function()
     require('lspsaga').setup({
       rename = {
+        enable = false,
         in_select = false
       },
       lightbulb = {

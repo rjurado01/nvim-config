@@ -1,6 +1,7 @@
 return {
   {
     "EdenEast/nightfox.nvim",
+    enabled = true,
     lazy = false,
     priority = 1000,
     config = function()
@@ -27,7 +28,7 @@ return {
 
   {
     'romainl/Apprentice',
-    enabled = true,
+    enabled = false,
     lazy = false,
     priority = 1000,
     config = function()
@@ -66,23 +67,26 @@ return {
     end
   },
 
-  -- { 'jacoborus/tender.vim', lazy = false, priority = 1000 },
 
+  -- Other themes I have tried
+  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  -- { 'rose-pine/neovim', lazy = false, priority = 1000 },
+  -- { 'shaunsingh/nord.nvim', lazy = false, priority = 1000 },
+  -- { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+  -- { 'kaiuri/nvim-juliana', lazy = false, priority = 1000 },
+  -- { 'embark-theme/vim', lazy = false, priority = 1000 },
+  -- { 'mhartington/oceanic-next', lazy = false, priority = 1000 },
+
+  -- I don't like these themes but keep for reference
+  -- { 'jacoborus/tender.vim', lazy = false, priority = 1000 },
   -- { 'AlexvZyl/nordic.nvim', lazy = false, priority = 1000 },
   -- { 'loctvl842/monokai-pro.nvim', lazy = false, priority = 1000 },
   -- { 'marko-cerovac/material.nvim', lazy = false, priority = 1000 },
   -- { 'olivercederborg/poimandres.nvim', lazy = false, priority = 1000 },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   -- { 'Mofiqul/vscode.nvim', lazy = false, priority = 1000 },
   -- { 'rebelot/kanagawa.nvim', lazy = false, priority = 1000 },
-  { 'rose-pine/neovim', lazy = false, priority = 1000 },
   -- { 'clearaspect/onehalf', lazy = false, priority = 1000 },
-  { 'shaunsingh/nord.nvim', lazy = false, priority = 1000 },
   -- { "topazape/oldtale.nvim", lazy = false, priority = 1000 },
-  { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
   -- { "aktersnurra/no-clown-fiesta.nvim", lazy = false, priority = 1000 },
   -- { 'projekt0n/github-nvim-theme', name = 'github-theme' },
-  { 'kaiuri/nvim-juliana', lazy = false, priority = 1000 },
-  { 'embark-theme/vim', lazy = false, priority = 1000 },
-  { 'mhartington/oceanic-next', lazy = false, priority = 1000 },
-}
+  }

@@ -1,5 +1,6 @@
 return {
   "NickvanDyke/opencode.nvim",
+  lazy = true,
   config = function()
     vim.g.opencode_opts = {
       prompts = {},

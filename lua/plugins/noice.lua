@@ -6,6 +6,14 @@ return {
   event = "VeryLazy",
   opts = {
     -- add any options here
+    lsp = {
+      progress = {
+        enabled = true,
+      },
+      signature = {
+        enabled = false,
+      },
+    },
     cmdline = {
       format = {
         cmdline = { pattern = "^:", icon = ":", lang = "vim" },
