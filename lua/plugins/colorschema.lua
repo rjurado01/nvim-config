@@ -16,6 +16,8 @@ return {
         -- },
       })
 
+      vim.cmd("colorscheme nightfox")
+
       -- Personalizar los colores de diffview con fondos casi #262626 y matices sutiles
       -- vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#263226", fg = "#d7ffaf", blend = 10 })    -- Fondo verde oscuro
       -- vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#322626", fg = "#ffafaf", blend = 10 }) -- Fondo rojo oscuro
