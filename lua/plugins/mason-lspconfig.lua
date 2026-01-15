@@ -29,6 +29,7 @@ return {
     'neovim/nvim-lspconfig',
     config = function()
       vim.lsp.enable('eslint')
+      vim.lsp.enable('typescript-tools')
 
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)

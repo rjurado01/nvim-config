@@ -35,25 +35,9 @@ vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {desc = 'Open float 
 vim.keymap.set('n', '<leader>ñ', '<Cmd>Themery<CR>', {desc = 'Themery'})
 vim.keymap.set('n', '<leader>Ñ', '<Cmd>lua Snacks.picker.colorschemes()<CR>', {desc = 'Themery'})
 
-
 vim.keymap.set('n', '<leader>ge', '<cmd>lua vim.lsp.buf.definition()<CR>', {desc = 'Goto definition'})
-
-vim.keymap.set("n", "<leader>gv", function()
-  vim.cmd("vsplit") -- Abre un vsplit
-  -- vim.lsp.buf.definition() -- Salta a la definición en la nueva ventana
-  vim.lsp.buf.type_definition() -- Salta a la definición del tipo en la nueva ventana
-end, { noremap = true, silent = true, desc = "Goto definition vsplit" })
-
-vim.keymap.set("n", "<leader>gt", function()
-  local pos = vim.api.nvim_win_get_cursor(0) -- Guarda la posición actual
-  vim.lsp.buf.definition() -- Salta a la definición en la misma ventana
-  local new_file = vim.api.nvim_buf_get_name(0) -- Obtiene el nombre del nuevo archivo
-
-  if new_file ~= "" then
-    vim.cmd("tabedit " .. new_file) -- Si hay un archivo, lo abre en una nueva pestaña
-    vim.api.nvim_win_set_cursor(0, pos) -- Mantiene la posición del cursor
-  end
-end, { noremap = true, silent = true, desc = 'Goto definition tabnew' })
+vim.keymap.set('n', '<leader>gv', '<cmd>vsplit | lua vim.lsp.buf.type_definition()<CR>', { desc = "Type definition vsplit" })
+vim.keymap.set('n', '<leader>gt', '<cmd>tab split | lua vim.lsp.buf.type_definition()<CR>', { desc = 'Type definition tab' })
 
 vim.api.nvim_create_user_command("Surround", function()
   local keys = vim.api.nvim_replace_termcodes("viw", true, false, true)
@@ -135,7 +119,7 @@ vim.keymap.set('n', '<leader>ce', '<Cmd>:EslintFixAll<CR>', {desc = 'EslintFixAl
 vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, {desc = 'Rename'})
 vim.keymap.set('n', '<Leader>cs', vim.lsp.buf.signature_help, {desc = 'Toggle signature' })
 vim.keymap.set('n', '<leader>cd', '<Cmd>:Lspsaga show_line_diagnostics<CR>', {desc = 'Open float diagnostic'})
-vim.keymap.set('n', '<leader>ct', '<cmd>tab split | lua vim.lsp.buf.definition()<CR>', {})
+vim.keymap.set('n', '<leader>ct', '<cmd>tab split | lua vim.lsp.buf.implementation()<CR>', {})
 vim.keymap.set('n', '<leader>cv', '<cmd>vsplit | lua vim.lsp.buf.implementation()<CR>', {})
 vim.keymap.set('n', '<leader>cg', '<cmd>lua vim.lsp.buf.implementation()<CR>', {})
 
@@ -169,7 +153,7 @@ vim.keymap.set('n', '<leader>cg', '<cmd>lua vim.lsp.buf.implementation()<CR>', {
 -- end, { desc = "Add to opencode" })
 --
 -- vim.keymap.set({ "n", "x" }, "<leader>aa", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode" })
--- vim.keymap.set({ "n", "x" }, "<leader>ax", function() require("opencode").select() end, { desc = "Execute opencode action…" })
+vim.keymap.set({ "n", "x" }, "<leader>ax", function() require("opencode").select() end, { desc = "Execute opencode action…" })
 
 -- vim.keymap.set("n",        "<S-C-u>", function() require("opencode").command("session.half.page.up") end,   { desc = "opencode half page up" })
 -- vim.keymap.set("n",        "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "opencode half page down" })
