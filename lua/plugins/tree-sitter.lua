@@ -2,20 +2,21 @@
 return { 
   'nvim-treesitter/nvim-treesitter',
   enabled = true,
+  lazy = false,
   build = ':TSUpdate',
-  event = 'VeryLazy',
-  main = 'nvim-treesitter.configs',
-  opts = {
-    ensure_installed = {
-      'lua',
-      'typescript',
-      'regex',
-    },
-    highlight = {
-      enable = true,
-    },
-    indent = {
-      enable = true,
-    }
-  },
+  config = function()
+    require('nvim-treesitter').setup({
+      ensure_install = {
+        'lua',
+        'typescript',
+        'regex',
+      },
+      highlight = {
+        enable = true,
+      },
+      indent = {
+        enable = true,
+      }
+    })
+  end,
 }
