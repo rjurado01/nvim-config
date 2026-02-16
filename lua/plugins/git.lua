@@ -2,11 +2,14 @@ return {
   {'tpope/vim-fugitive', lazy = true},
 
   -- https://github.com/sindrets/diffview.nvim#configuration
-  {'sindrets/diffview.nvim', lazy = true},
+  {
+    'sindrets/diffview.nvim',
+    cmd = 'DiffviewOpen',
+  },
 
   {
     'lewis6991/gitsigns.nvim',
-    lazy = true,
+    cmd = 'Gitsigns',
     config = true
   },
 }

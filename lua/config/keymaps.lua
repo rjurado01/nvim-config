@@ -125,41 +125,7 @@ vim.keymap.set('n', '<leader>cg', '<cmd>lua vim.lsp.buf.implementation()<CR>', {
 
 --------------------------------- Opencode ---------------------------------
 
--- vim.keymap.set({ "n", "x" }, "<leader>an", function()
---   require("opencode").command("session.new")
---   require("opencode").prompt("@this")
---
---   require("floaterm").open()
---
---   local utils = require("floaterm.utils")
---   local terminal = utils.get_term_by_key("Opencode", "name")
---
---   if terminal then
---     utils.switch_buf(terminal[2].buf)
---   end
--- end, { desc = "Add to opencode" })
---
--- vim.keymap.set({ "n", "x" }, "<leader>at", function()
---   require("floaterm").open()
---
---   local utils = require("floaterm.utils")
---   local terminal = utils.get_term_by_key("Opencode", "name")
---
---   if terminal then
---     utils.switch_buf(terminal[2].buf)
---
---     require("floaterm.api").send_cmd({ cmd = "opencode" })
---   end
--- end, { desc = "Add to opencode" })
---
--- vim.keymap.set({ "n", "x" }, "<leader>aa", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode" })
-vim.keymap.set({ "n", "x" }, "<leader>ax", function() require("opencode").select() end, { desc = "Execute opencode action…" })
-
--- vim.keymap.set("n",        "<S-C-u>", function() require("opencode").command("session.half.page.up") end,   { desc = "opencode half page up" })
--- vim.keymap.set("n",        "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "opencode half page down" })
--- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
--- vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment', noremap = true })
--- vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement', noremap = true })
+-- Están definidos en el plugin de floaterm !!
 
 --------------------------------- Typescript ---------------------------------
 ---

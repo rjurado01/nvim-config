@@ -18,7 +18,7 @@ return {
     local terminals = {
       { name = 'Term', key = 't', desc = 'Term' },
       { name = 'Server', key = 's', desc = 'Servidor' },
-      { name = 'AI', key = 'a', desc = 'AI', cmd = 'opencode' },
+      { name = 'AI', key = 'a', desc = 'AI', cmd = 'opencode --port' },
     }
 
     -- Función para abrir o toggle una terminal por nombre
@@ -135,7 +135,7 @@ return {
       local this_ref = context:this()
 
       -- Abrir/mostrar la terminal con opencode
-      toggle_term('AI', 'opencode')
+      toggle_term('AI', 'opencode --port')
 
       -- Polling para esperar a que opencode esté listo
       local attempts = 0
@@ -150,9 +150,9 @@ return {
 
         attempts = attempts + 1
 
-        -- Intentar obtener el puerto SIN lanzar otro proceso (launch = false)
-        require("opencode.cli.server").get_port(false)
-          :next(function()
+        -- Intentar obtener el servidor SIN lanzar otro proceso (launch = false)
+        require("opencode.cli.server").get(false)
+          :next(function(server)
             if not sent then
               sent = true
               timer:stop()
@@ -173,5 +173,35 @@ return {
         end
       end))
     end, { desc = "Add to AI" })
+
+    -- Cerrar OpenCode al salir de Neovim
+    vim.api.nvim_create_autocmd("VimLeavePre", {
+      callback = function()
+        local ai_bufnr = vim.fn['floaterm#terminal#get_bufnr']('AI')
+
+        if ai_bufnr ~= -1 then
+          -- Obtener el job ID de la terminal
+          local job_id = vim.fn.getbufinfo(ai_bufnr)[1].variables.terminal_job_id
+
+          if job_id then
+            -- Obtener el PID del proceso en la terminal
+            local pid = vim.fn.jobpid(job_id)
+
+            if pid and pid > 0 then
+              -- Matar el proceso específico
+              vim.fn.system(string.format('kill -TERM %d', pid))
+              vim.wait(100) -- Esperar un poco
+              -- Si todavía está vivo, forzar
+              vim.fn.system(string.format('kill -9 %d 2>/dev/null', pid))
+            end
+          end
+
+          -- Cerrar la terminal floaterm
+          pcall(function()
+            vim.cmd('FloatermKill! AI')
+          end)
+        end
+      end,
+    })
   end
 }
