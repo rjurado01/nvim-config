@@ -112,11 +112,11 @@ return {
 
     -- Cambiar tipo de ventana (afecta a todas las terminales)
     vim.keymap.set('t', '<C-f>', function()
-      update_all_terminals({ wintype = 'float', width = 0.85, height = 0.85, position = 'center' })
+      update_all_terminals({ wintype = 'float', width = 0.90, height = 0.90, position = 'center' })
     end, { desc = 'Terminal flotante (todas)' })
 
     vim.keymap.set('t', '<C-v>', function()
-      update_all_terminals({ wintype = 'vsplit', width = 0.5, height = 1.0 })
+      update_all_terminals({ wintype = 'vsplit', width = 0.7, height = 1.0 })
     end, { desc = 'Terminal vertical (todas)' })
 
     -- Atajos en modo normal dentro del buffer de terminal
@@ -151,7 +151,7 @@ return {
         attempts = attempts + 1
 
         -- Intentar obtener el servidor SIN lanzar otro proceso (launch = false)
-        require("opencode.cli.server").get(false)
+        require("opencode.server").get(false)
           :next(function(server)
             if not sent then
               sent = true
